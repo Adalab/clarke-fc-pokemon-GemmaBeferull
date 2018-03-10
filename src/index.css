@@ -1,0 +1,114 @@
+* {
+  font-family: 'Della Respira';
+  box-sizing: border-box;
+
+}
+
+.hero {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+.Gryffindor {
+border: 4px solid red;
+
+}
+
+.Hufflepuff {
+border: 4px solid yellow;
+
+}
+
+.Slytherin {
+border: 4px solid green;
+
+}
+
+.shield {
+  width: 100px;
+  height: 100px;
+  position:absolute;
+  right: 0;
+  bottom: 0;
+
+}
+
+.hidden {
+  display: none;
+}
+
+.Ravenclaw {
+border: 4px solid blue;
+}
+
+.title {
+  padding-top: 25vh;
+  color: 	#b29600;
+  text-align: center;
+
+}
+
+.logo {
+  max-width: 55vw;
+  height: 40vh;
+  margin: auto;
+  background-image: url("/images/pokemon.png" );
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+
+}
+
+.styleImage {
+  margin: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 40vw;
+  height: 30vh;
+  border-radius: 10px;
+  position: relative;
+
+}
+
+.nameInput {
+  margin: 15px 0 15px 10px;
+  width: 60vw;
+}
+.greyBack {
+  background-color: #D8D8D8;
+}
+
+.container {
+  text-align: center;
+}
+
+
+@media (min-width: 768px) {
+  .grid {
+  grid-template-columns: 1fr 1fr;
+}
+}
+
+@media (min-width: 1024px) {
+  .grid {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+ .styleImage {
+   width: 20vw;
+   height:  40vh;
+ }
+ .logo {
+   max-width: 40vw;
+   height: 45vh;
+ }
+
+}
