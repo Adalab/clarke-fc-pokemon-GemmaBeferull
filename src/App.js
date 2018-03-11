@@ -15,44 +15,59 @@ class App extends Component {
 
   componentDidMount () {
      for (let i = 1; i <=25; i++) {
-       fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-       .then(response => response.json())
-       .then(json => {
+       fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+			 .then((response) => response.json())
+       .then((json) => {
+				 let pokemonJson = this.state.pokemons;
+		 			pokemonJson.push(json)
           this.setState({
-          pokemons: json
+          pokemons: pokemonJson
          });
-       })
+       });
      }
    }
-
 
   handleChange = (event) => {
 		this.setState ({
 			filtered: event.target.value
 });
   }
+	showPokemons () {
+      let pokemons = this.state.pokemons
+      pokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(this.state.filtered));
+
+      return(
+        <ul className="pokemonContainer">
+          {pokemons.sort((a,b) => a.id - b.id).map((pokemon, index) =>
+            <li key={index} >
+              <Item
+                key={index}
+                id={pokemon.id}
+                name={pokemon.name}
+                types= {pokemon.types.map((t) => t.type.name)}
+              />
+            </li>
+          )}
+        </ul>
+      );
+    }
 
   render() {
-    const filterList = this.state.pokemons.filter((pokemon) => {
+    let filterList = this.state.pokemons
+		filterList.filter((pokemon) => {
       return pokemon.name.toLowerCase().includes (this.state.filtered.toLowerCase())
     });
     return (
 			<div>
-      <Header />
-			<div className="greyBack" id="link">
-			<input className="nameInput" placeholder = "Busca tu pokemon"  onChange={ this.handleChange } value= {this.state.filter} ></input>
-      <div className="grid"> {
-        filterList.map((character,index) =>
-           <Item
-           img= {character.sprites.back_default}
-					 name={character.forms.name}
-           type={character.types.type.name}
-           />
-        )
-      }
-			</div>
+       <Header />
+			 <div className="greyBack" id="link">
+			   <input className="nameInput" placeholder = "Busca tu pokemon"  onChange={ this.handleChange } value= {this.state.filter} ></input>
+         <div className="grid">
+          {this.showPokemons()}
+         </div>
+        </div>
       </div>
-			</div>
+
     );
   }
 }
