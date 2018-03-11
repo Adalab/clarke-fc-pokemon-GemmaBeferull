@@ -37,18 +37,18 @@ class App extends Component {
       pokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(this.state.filtered));
 
       return(
-        <ul className="pokemonContainer">
+        <div className="grid">
           {pokemons.sort((a,b) => a.id - b.id).map((pokemon, index) =>
-            <li key={index} >
+            <div key={index} >
               <Item
                 key={index}
                 id={pokemon.id}
                 name={pokemon.name}
                 types= {pokemon.types.map((t) => t.type.name)}
               />
-            </li>
+            </div>
           )}
-        </ul>
+        </div>
       );
     }
 

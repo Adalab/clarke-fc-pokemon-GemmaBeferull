@@ -11,37 +11,11 @@
 
 }
 
-.Gryffindor {
-border: 4px solid red;
-
-}
-
-.Hufflepuff {
-border: 4px solid yellow;
-
-}
-
-.Slytherin {
-border: 4px solid green;
-
-}
-
-.shield {
-  width: 100px;
-  height: 100px;
-  position:absolute;
-  right: 0;
-  bottom: 0;
-
-}
 
 .hidden {
   display: none;
 }
 
-.Ravenclaw {
-border: 4px solid blue;
-}
 
 .title {
   padding-top: 25vh;
@@ -64,6 +38,7 @@ border: 4px solid blue;
   display: grid;
   width: 100%;
   grid-template-columns: 1fr;
+
 
 }
 
@@ -89,12 +64,17 @@ border: 4px solid blue;
 
 .container {
   text-align: center;
+
 }
 
 
 @media (min-width: 768px) {
   .grid {
+    width: 100vw;
   grid-template-columns: 1fr 1fr;
+}
+.container {
+  width: 40vw;
 }
 }
 
@@ -102,6 +82,10 @@ border: 4px solid blue;
   .grid {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+.container {
+  width: 20vw;
+}
+
  .styleImage {
    width: 20vw;
    height:  40vh;
