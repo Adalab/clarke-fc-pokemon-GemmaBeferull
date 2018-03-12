@@ -7,7 +7,7 @@ class Item extends Component{
         <img className="styleImage" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.props.id}.png`} alt={this.props.name}/>
 				<h2>{this.props.name}</h2>
           {this.props.types.map((type, index) =>
-            <p key={index} className={`${type.toLowerCase()}`}>
+            <p key={index}>
               {type}
             </p>)}
 			</div>

@@ -10,7 +10,6 @@ class App extends Component {
 			filtered: ""
 
 		}
-    this.handleChange = this.handleChange.bind(this);
 	}
 
   componentDidMount () {
@@ -32,38 +31,31 @@ class App extends Component {
 			filtered: event.target.value
 });
   }
-	showPokemons () {
-      let pokemons = this.state.pokemons
-      pokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(this.state.filtered));
 
-      return(
-        <div className="grid">
-          {pokemons.sort((a,b) => a.id - b.id).map((pokemon, index) =>
-            <div key={index} >
-              <Item
-                key={index}
-                id={pokemon.id}
-                name={pokemon.name}
-                types= {pokemon.types.map((t) => t.type.name)}
-              />
-            </div>
-          )}
-        </div>
-      );
-    }
 
   render() {
-    let filterList = this.state.pokemons
-		filterList.filter((pokemon) => {
+    let filterList = this.state.pokemons.filter((pokemon) => {
       return pokemon.name.toLowerCase().includes (this.state.filtered.toLowerCase())
     });
+
     return (
 			<div>
        <Header />
 			 <div className="greyBack" id="link">
-			   <input className="nameInput" placeholder = "Busca tu pokemon"  onChange={ this.handleChange } value= {this.state.filter} ></input>
+			   <input className="nameInput" placeholder = "Busca tu pokemon"  onChange={ this.handleChange } value= {this.state.filtered} ></input>
          <div className="grid">
-          {this.showPokemons()}
+
+					 {filterList.sort((a,b) => a.id - b.id).map((pokemon, index) =>
+						 <div key={index} >
+							 <Item
+								 key={index}
+								 id={pokemon.id}
+								 name={pokemon.name}
+								 types= {pokemon.types.map((t) => t.type.name)}
+							 />
+						 </div>
+					 )}
+
          </div>
         </div>
       </div>
